@@ -6,6 +6,7 @@ namespace MusheAbdulHakim\CoinGecko\Api;
 use MusheAbdulHakim\CoinGecko\Request;
 
 class Finance extends Request {
+    
     /**
      * @param array $params
      * @return array
