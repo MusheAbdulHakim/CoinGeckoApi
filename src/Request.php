@@ -20,7 +20,8 @@ class Request {
     }
     
     /**
-     * Make a 
+     * Make a get request to api endpoint.
+     * 
      * @param string $uri
      * @param array $query
      * @return array
