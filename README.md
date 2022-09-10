@@ -4,7 +4,7 @@
 **CoinGeckApi** is a PHP & Laravel Package, (Designed to help working with coingecko api easier and faster).
 
 
-## Software Requirement
+## Requirement
 - Git
 - Composer
 - php >= 7.4
