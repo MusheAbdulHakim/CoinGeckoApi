@@ -9,7 +9,6 @@ use Psr\Http\Message\ResponseInterface;
 use MusheAbdulHakim\CoinGecko\Api\Coins;
 use MusheAbdulHakim\CoinGecko\Api\Events;
 use MusheAbdulHakim\CoinGecko\Api\Simple;
-use MusheAbdulHakim\CoinGecko\Api\Finance;
 use MusheAbdulHakim\CoinGecko\Api\Globals;
 use MusheAbdulHakim\CoinGecko\Api\Indexes;
 use MusheAbdulHakim\CoinGecko\Api\Contract;
@@ -128,10 +127,6 @@ class CoinGecko {
         return (new Search());
     }
 
-    public function finance(): Finance
-    {
-        return (new Finance());
-    }
 
     public function indexes(): Indexes
     {

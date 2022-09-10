@@ -10,7 +10,6 @@ use MusheAbdulHakim\CoinGecko\Api\Derivatives;
 use MusheAbdulHakim\CoinGecko\Api\Events;
 use MusheAbdulHakim\CoinGecko\Api\ExchangeRates;
 use MusheAbdulHakim\CoinGecko\Api\Exchanges;
-use MusheAbdulHakim\CoinGecko\Api\Finance;
 use MusheAbdulHakim\CoinGecko\Api\Globals;
 use MusheAbdulHakim\CoinGecko\Api\Indexes;
 use MusheAbdulHakim\CoinGecko\Api\Search;
