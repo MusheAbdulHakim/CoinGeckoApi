@@ -23,11 +23,23 @@ $ composer require musheabdulhakim/coingecko
 ```php
 use MusheAbdulHakim\CoinGecko\CoinGecko;
 
-$client = new CoinGecko();
-$ping = $client->ping();
+$coingecko = new CoinGecko();
+$ping = $coingecko->ping();
 
 ```
 
+
+## Available methods
+
+### Ping
+
+#### [ping](https://www.coingecko.com/api/documentations/v3#/ping/get_ping)
+
+Check API server status
+
+```php
+$ping = $coingecko->ping();
+```
 
 ## Test
 
