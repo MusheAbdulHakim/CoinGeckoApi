@@ -91,8 +91,8 @@ class CoinGeckoServiceProvider extends ServiceProvider
      */
     private function facadeBindings()
     {
-        // Register 'nextpack.say' instance container
-        $this->app['nextpack.sample'] = $this->app->share(function ($app) {
+        // Register 'coingecko.coingecko' instance container
+        $this->app['musheabdulhakim.coingecko'] = $this->app->share(function ($app) {
             return $app->make(CoinGecko::class);
         });
 

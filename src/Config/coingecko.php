@@ -4,12 +4,31 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    |
+    |CoinGecko Api Version
     |--------------------------------------------------------------------------
     |
     */
-    'greeting' => 'hello',
+    'version' => 'v3',
 
-    'base_url' => 'https://api.coingecko.com/api/v3/ping',
+    /**
+     * Base Api Url.
+     * 
+     * Note: 
+     *  If you are using api pro version, 
+     *  Replace with https://pro-api.coingecko.com/api/
+     *  Make sure it ends with slash.
+     * 
+     * 
+     */
+    'base_url' => 'https://api.coingecko.com/api/',
+
+    /**
+     * CoinGecko Api Key.
+     * 
+     * Note: 
+     *  Pro Api Users only.
+     * 
+     */
+    'api_key' => '',
 
 ];
