@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace MusheAbdulHakim\CoinGecko\Tests;
 
 use PHPUnit\Framework\TestCase as FrameworkTestCase;
