@@ -7,16 +7,17 @@ use GuzzleHttp\Client;
 use MusheAbdulHakim\CoinGecko\Api\Ping;
 use Psr\Http\Message\ResponseInterface;
 use MusheAbdulHakim\CoinGecko\Api\Coins;
-use MusheAbdulHakim\CoinGecko\Api\Companies;
 use MusheAbdulHakim\CoinGecko\Api\Events;
 use MusheAbdulHakim\CoinGecko\Api\Simple;
 use MusheAbdulHakim\CoinGecko\Api\Finance;
 use MusheAbdulHakim\CoinGecko\Api\Globals;
 use MusheAbdulHakim\CoinGecko\Api\Indexes;
 use MusheAbdulHakim\CoinGecko\Api\Contract;
+use MusheAbdulHakim\CoinGecko\Api\Companies;
 use MusheAbdulHakim\CoinGecko\Api\Exchanges;
 use MusheAbdulHakim\CoinGecko\Api\Derivatives;
 use MusheAbdulHakim\CoinGecko\Api\ExchangeRates;
+use MusheAbdulHakim\CoinGecko\Api\Search;
 
 class CoinGecko {
 
@@ -122,6 +123,11 @@ class CoinGecko {
         return (new Exchanges());
     }
 
+    public function search(): Search {
+
+        return (new Search());
+    }
+
     public function finance(): Finance
     {
         return (new Finance());
@@ -129,7 +135,7 @@ class CoinGecko {
 
     public function indexes(): Indexes
     {
-        return new (new Indexes());
+        return (new Indexes());
     }
 
     public function derivatives(): Derivatives
