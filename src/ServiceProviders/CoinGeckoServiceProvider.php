@@ -1,5 +1,4 @@
 <?php
-
 namespace MusheAbdulHakim\CoinGecko\ServiceProviders;
 
 use Illuminate\Support\ServiceProvider;

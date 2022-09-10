@@ -27,23 +27,20 @@ class Request {
      * @throws Exception
      */
     public function get(string $uri, array $query = []): array {
-        try {
-            $url = $this->client->getVersion().'/'.$uri;
-            $api_key = $this->config->get('api_key');
-            if(!empty($api_key)){
-                $query['x_cg_pro_api_key'] = $api_key;
-            }
-            $http_response = $this->client->getClient()->get(
-                $url,
-                [
-                    'query' => $query
-                ]
-            );
-            $this->client->setLastResponse($http_response);
-            return $this->response->toArray($http_response);
-        } catch (\Exception $e) {
-            return array($e->getMessage());
+        $url = $this->client->getVersion().'/'.$uri;
+        $api_key = $this->config->get('api_key');
+        if(!empty($api_key)){
+            $query['x_cg_pro_api_key'] = $api_key;
         }
+        $http_response = $this->client->getClient()->get(
+            $url,
+            [
+                'query' => $query
+            ]
+        );
+        $this->client->setLastResponse($http_response);
+        return $this->response->toArray($http_response);
+        
     }
 
 }
