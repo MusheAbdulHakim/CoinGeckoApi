@@ -55,7 +55,10 @@ class Config
         // check if this laravel specific function `config_path()` exist (means this package is used inside
         // a laravel framework). If so then load then try to load the laravel config file if it exist.
         if (function_exists('config_path')) {
-            $config_path = config_path();
+            $file = config_path(). '/' . self::CONFIG_FILE_NAME . '.php';
+            if(file_exists($file)){
+                $config_path = config_path();
+            }
         }
 
         return $config_path;
