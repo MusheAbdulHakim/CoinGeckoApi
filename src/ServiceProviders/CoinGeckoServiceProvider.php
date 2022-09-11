@@ -76,10 +76,9 @@ class CoinGeckoServiceProvider extends ServiceProvider
      */
     private function implementationBindings()
     {
-        $this->app->bind(
-            CoinGeckoInterface::class,
-            CoinGecko::class,
-        );
+        $this->app->bind(CoinGecko::class, function ($app) {
+            return new CoinGecko($app);
+        });
     }
 
     /**
@@ -109,14 +108,13 @@ class CoinGeckoServiceProvider extends ServiceProvider
     private function facadeBindings()
     {
         // Register 'coingecko.coingecko' instance container
-        $this->app['musheabdulhakim.coingecko'] = $this->app->share(function ($app) {
+        $this->app['coingecko'] = $this->app->share(function ($app) {
             return $app->make(CoinGecko::class);
         });
 
         // Register 'CoinGecko' Alias, So users don't have to add the Alias to the 'app/config/app.php'
         $this->app->booting(function () {
-            $loader = \Illuminate\Foundation\AliasLoader::getInstance();
-            $loader->alias('CoinGecko', CoinGeckoFacade::class);
+            $this->app->alias(CoinGeckoFacade::class,'CoinGecko');
         });
     }
 
@@ -127,15 +125,10 @@ class CoinGeckoServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return [];
+        return [
+            CoinGecko::class
+        ];
     }
 
-    /**
-     * Registering Other Custom Service Providers (if you have)
-     */
-    private function serviceProviders()
-    {
-        // $this->app->register('...\...\...');
-    }
 
 }
