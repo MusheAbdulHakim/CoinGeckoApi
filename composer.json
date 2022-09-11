@@ -19,13 +19,13 @@
   ],
   "require": {
     "php": ">=7.4.29",
-    "guzzlehttp/guzzle": "7.5.0",
-    "illuminate/config": "8.83.23"
+    "guzzlehttp/guzzle": ">=7.5.0",
+    "illuminate/config": ">=8.83.23"
   },
   "require-dev": {
-    "phpunit/phpunit": "9.5.24",
-    "mockery/mockery": "1.5.0",
-    "symfony/var-dumper": "5.4.11"
+    "phpunit/phpunit": ">=9.5.24",
+    "mockery/mockery": ">=1.5.0",
+    "symfony/var-dumper": ">=5.4.11"
   },
   "autoload": {
     "psr-4": {
@@ -40,10 +40,6 @@
   "scripts": {
     "test": "phpunit"
   },
-  "extra": {
-    "branch-alias": {
-      "dev-master": "1.0-dev"
-    }
-  },
-  "minimum-stability": "stable"
+  "minimum-stability": "stable",
+  "prefer-stable": true
 }
