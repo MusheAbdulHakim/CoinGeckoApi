@@ -41,6 +41,14 @@ class CoinGeckoServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        
+        /*
+        |--------------------------------------------------------------------------
+        | Implementation Config Merge
+        |--------------------------------------------------------------------------
+        */
+        $this->mergeConfig();
+        
         /*
         |--------------------------------------------------------------------------
         | Implementation Bindings
@@ -72,6 +80,16 @@ class CoinGeckoServiceProvider extends ServiceProvider
             CoinGeckoInterface::class,
             CoinGecko::class,
         );
+    }
+
+    /**
+     * Merge Config published config with package config
+     *
+     * @return void
+     */
+    public function mergeConfig(){
+        $config = __DIR__ . '/Config/coingecko.php';
+        $this->mergeConfigFrom($config,'coingecko');
     }
 
     /**
