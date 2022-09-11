@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace MusheAbdulHakim\CoinGecko\Facades;
 
 use Illuminate\Support\Facades\Facade;
+use MusheAbdulHakim\CoinGecko\CoinGecko as CoinGeckoService;
 
 /**
  * Class CoinGeckoFacade
@@ -20,6 +21,6 @@ class CoinGecko extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'coingecko';
+        return CoinGeckoService::class;
     }
 }
