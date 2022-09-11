@@ -7,16 +7,18 @@ use GuzzleHttp\Client;
 use MusheAbdulHakim\CoinGecko\Api\Ping;
 use Psr\Http\Message\ResponseInterface;
 use MusheAbdulHakim\CoinGecko\Api\Coins;
-use MusheAbdulHakim\CoinGecko\Api\Events;
+use MusheAbdulHakim\CoinGecko\Api\Search;
 use MusheAbdulHakim\CoinGecko\Api\Simple;
 use MusheAbdulHakim\CoinGecko\Api\Globals;
 use MusheAbdulHakim\CoinGecko\Api\Indexes;
 use MusheAbdulHakim\CoinGecko\Api\Contract;
+use MusheAbdulHakim\CoinGecko\Api\Trending;
 use MusheAbdulHakim\CoinGecko\Api\Companies;
 use MusheAbdulHakim\CoinGecko\Api\Exchanges;
+use MusheAbdulHakim\CoinGecko\Api\Categories;
 use MusheAbdulHakim\CoinGecko\Api\Derivatives;
 use MusheAbdulHakim\CoinGecko\Api\ExchangeRates;
-use MusheAbdulHakim\CoinGecko\Api\Search;
+use MusheAbdulHakim\CoinGecko\Api\AssetPlatforms;
 
 class CoinGecko {
 
@@ -117,14 +119,31 @@ class CoinGecko {
         return (new Contract());
     }
 
+    public function assetPlatforms(): AssetPlatforms {
+        return (new AssetPlatforms());
+    }
+
+    public function categories(): Categories {
+        return (new Categories());
+    }
+
     public function exchanges(): Exchanges
     {
         return (new Exchanges());
     }
 
+    public function exchangeRates(): ExchangeRates
+    {
+        return (new ExchangeRates());
+    }
+
     public function search(): Search {
 
         return (new Search());
+    }
+
+    public function trending(): Trending {
+        return (new Trending());
     }
 
 
@@ -138,15 +157,6 @@ class CoinGecko {
         return (new Derivatives());
     }
 
-    public function events(): Events
-    {
-        return (new Events());
-    }
-
-    public function exchangeRates(): ExchangeRates
-    {
-        return (new ExchangeRates());
-    }
 
     public function globals(): Globals
     {
