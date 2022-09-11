@@ -20,6 +20,6 @@ class CoinGecko extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'musheabdulhakim.coingecko';
+        return 'coingecko';
     }
 }
