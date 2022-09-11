@@ -7,7 +7,6 @@ use MusheAbdulHakim\CoinGecko\Api\Coins;
 use MusheAbdulHakim\CoinGecko\Api\Companies;
 use MusheAbdulHakim\CoinGecko\Api\Contract;
 use MusheAbdulHakim\CoinGecko\Api\Derivatives;
-use MusheAbdulHakim\CoinGecko\Api\Events;
 use MusheAbdulHakim\CoinGecko\Api\ExchangeRates;
 use MusheAbdulHakim\CoinGecko\Api\Exchanges;
 use MusheAbdulHakim\CoinGecko\Api\Globals;
@@ -74,11 +73,7 @@ class CoinGeckTests extends TestCase {
         $this->assertInstanceOf(Derivatives::class, $coingecko->derivatives());
     }
 
-    public function testEvents(){
-        $coingecko = new CoinGecko();
-        $this->assertInstanceOf(Events::class, $coingecko->events());
-    }
-
+   
     public function testExchangeRates(){
         $coingecko = new CoinGecko();
         $this->assertInstanceOf(ExchangeRates::class, $coingecko->exchangeRates());

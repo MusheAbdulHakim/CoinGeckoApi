@@ -28,6 +28,18 @@ $ping = $coingecko->ping();
 
 ```
 
+### Configuration
+Update api version, base url and api key
+```php
+
+'version' => 'v3',
+
+'base_url' => 'https://api.coingecko.com/api/',
+
+'api_key' => '',
+
+```
+
 
 ## Available methods
 
@@ -126,7 +138,7 @@ Get historical market data include price, market cap, and 24h volume within a ra
 $result = $coingecko->coins()->getMarketChartRange('bitcoin', 'usd', '1392577232', '1422577232');
 ```
 
-#### [getMarketChartRange](https://www.coingecko.com/api/documentations/v3#/coins/get_coins__id__status_updates) [BETA]
+#### [getMarketChartRange](https://www.coingecko.com/api/documentations/v3#/coins/get_coins__id__status_updates)
 
 Get status updates for a given coin
 
@@ -160,9 +172,42 @@ Get historical market data include price, market cap, and 24h volume within a ra
 $result = $coingecko->contract()->getMarketChartRange('ethereum', '0xE41d2489571d322189246DaFA5ebDe1F4699F498', 'usd', '11392577232', ' 1422577232');
 ```
 
-### Exchange [BETA]
 
-#### [getExchanges](https://www.coingecko.com/api/documentations/v3#/exchanges_(beta)/get_exchanges)
+
+### asset_platforms
+
+#### [getList](https://www.coingecko.com/api/documentations/v3#/asset_platforms)
+
+List all asset platforms
+
+
+```php
+$data = $coingecko->assetPlatforms()->getList();
+```
+
+### Categories
+
+#### [getList](https://www.coingecko.com/api/documentations/v3#/categories)
+
+List all categories
+
+```php
+$data = $coingecko->categories()->getList();
+```
+
+#### [getListWithMarketData](https://www.coingecko.com/api/documentations/v3#/categories)
+
+List all categories with market data
+
+```php
+
+$data = $coingecko->categories()->getListWithMarketData();
+
+```
+
+### Exchange 
+
+#### [getExchanges](https://www.coingecko.com/api/documentations/v3#/exchanges/get_exchanges)
 
 List all exchanges
 
@@ -170,7 +215,7 @@ List all exchanges
 $exchanges = $coingecko->exchanges()->getExchanges();
 ```
 
-#### [getList](https://www.coingecko.com/api/documentations/v3#/exchanges_(beta)/get_exchanges_list)
+#### [getList](https://www.coingecko.com/api/documentations/v3#/exchanges/get_exchanges_list)
 
 List all supported markets id and name (no pagination required)
 
@@ -178,7 +223,7 @@ List all supported markets id and name (no pagination required)
 $exchange_list = $coingecko->exchanges()->getList();
 ```
 
-#### [getExchange](https://www.coingecko.com/api/documentations/v3#/exchanges_(beta)/get_exchanges__id_)
+#### [getExchange](https://www.coingecko.com/api/documentations/v3#/exchanges/get_exchanges__id_)
 
 Get exchange volume in BTC and top 100 tickers only
 
@@ -186,7 +231,7 @@ Get exchange volume in BTC and top 100 tickers only
 $exchange = $coingecko->exchanges()->getExchange('binance');
 ```
 
-#### [getTickers](https://www.coingecko.com/api/documentations/v3#/exchanges_(beta)/get_exchanges__id__tickers)
+#### [getTickers](https://www.coingecko.com/api/documentations/v3#/exchanges/get_exchanges__id__tickers)
 
 Get exchange tickers (paginated)
 
@@ -194,21 +239,144 @@ Get exchange tickers (paginated)
 $data = $coingecko->exchanges()->getTickers('binance', ['coin_ids' => '0x,bitcoin']);
 ```
 
-#### [getStatusUpdates](https://www.coingecko.com/api/documentations/v3#/exchanges_(beta)/get_exchanges__id__status_updates)
+#### [getStatusUpdates](https://www.coingecko.com/api/documentations/v3#/exchanges/get_exchanges__id__status_updates)
 
-Get status updates for a given exchange (beta)
+Get status updates for a given exchange
 
 ```php
 $data = $coingecko->exchanges()->getStatusUpdates('binance');
 ```
 
-#### [getVolumeChart](https://www.coingecko.com/api/documentations/v3#/exchanges_(beta)/get_exchanges__id__volume_chart)
+#### [getVolumeChart](https://www.coingecko.com/api/documentations/v3#/exchanges/get_exchanges__id__volume_chart)
 
-Get volume_chart data for a given exchange (beta)
+Get volume_chart data for a given exchange
 
 ```php
 $data = $coingecko->exchanges()->getVolumeChart('binance', '1');
 ```
+
+### Indexes
+
+#### [getIndexes](https://www.coingecko.com/api/documentations/v3#/indexes/get_indexes)
+
+List all market indexes
+
+```php
+$data = $coingecko->indexes()->getIndexes();
+```
+
+#### [getIndex](https://www.coingecko.com/api/documentations/v3#/indexes/get_indexes__id_)
+
+Get market index by id
+
+```php
+$data = $coingecko->indexes()->getIndex('BAT');
+```
+
+#### [getList](https://www.coingecko.com/api/documentations/v3#/indexes/get_indexes_list)
+
+List market indexes id and name
+
+```php
+$data = $coingecko->indexes()->getList();
+```
+
+### Derivatives
+
+#### [getDerivatives](https://www.coingecko.com/api/documentations/v3#/derivatives/get_derivatives)
+
+List all derivative tickers
+
+```php
+$data = $client->derivatives()->getDerivatives();
+```
+
+#### [getExchanges](https://www.coingecko.com/api/documentations/v3#/derivatives/get_derivatives_exchanges)
+
+List all derivative exchanges
+
+```php
+$data = $coingecko->derivatives()->getExchanges();
+```
+
+#### [getExchange](https://www.coingecko.com/api/documentations/v3#/derivatives/get_derivatives_exchanges__id_)
+
+Show derivative exchange data
+
+```php
+$data = $coingecko->derivatives()->getExchange('binance_futures');
+```
+
+#### [getExchangeList](https://www.coingecko.com/api/documentations/v3#/derivatives/get_derivatives_exchanges_list)
+
+List all derivative exchanges name and identifier
+
+```php
+$data = $coingecko->derivatives()->getExchangeList();
+```
+
+### Exchange Rates
+
+#### [getExchangeRates](https://www.coingecko.com/api/documentations/v3#/exchange_rates)
+
+Get BTC-to-Currency exchange rates
+
+
+```php
+$data = $coingecko->exchangeRates()->getExchangeRates();
+```
+
+
+### Search
+
+#### [query](https://www.coingecko.com/api/documentations/v3#/search)
+
+Search for coins, categories and markets listed on CoinGecko ordered by largest Market Cap first
+
+
+```php
+$data = $coingecko->search()->query('ethereum');
+```
+
+### Trending
+
+#### [getList](https://www.coingecko.com/api/documentations/v3#/trending)
+
+List trending coins by most popular first
+
+```php
+$data = $coingecko->trending()->getList();
+```
+
+
+### Global 
+
+#### [getGlobal](https://www.coingecko.com/api/documentations/v3#/global/get_global)
+
+Get cryptocurrency global data
+
+```php
+$data = $coingecko->globals()->getGlobal();
+```
+
+Get Top 100 Cryptocurrency Global Decentralized Finance(defi) data
+
+```php
+$data = $coingecko->globals()->getGlobalDecentralizedFinanceDefi();
+
+```
+
+
+### Companies [Beta]
+
+#### [getPublicTreasury](https://www.coingecko.com/api/documentations/v3#/companies%20(beta)/get_companies_public_treasury__coin_id_)
+
+Get cryptocurrency global data
+
+```php
+$data = $coingecko->companies()->getPublicTreasury('ethereum');
+```
+
 
 ## Test
 
@@ -225,4 +393,11 @@ $ ./vendor/bin/phpunit
 ## License
 
 `musheabdulhakim/coingecko` is released under the MIT License. See the bundled [LICENSE](./LICENSE) for details.
+
+## Contribution
+
+Report all your issues [Here](https://github.com/MusheAbdulHakim/CoinGeckoApi/issues)
+
+All your pull requests are welcome :). 
+
 

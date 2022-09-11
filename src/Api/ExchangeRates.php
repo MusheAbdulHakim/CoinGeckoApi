@@ -9,6 +9,8 @@ class ExchangeRates extends Request
 {
 
     /**
+     * List rates
+     * 
      * @return array
      * @throws Exception
      */
