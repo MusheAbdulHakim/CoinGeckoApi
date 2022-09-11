@@ -3,7 +3,6 @@ namespace MusheAbdulHakim\CoinGecko\ServiceProviders;
 
 use Illuminate\Support\ServiceProvider;
 use MusheAbdulHakim\CoinGecko\CoinGecko;
-use MusheAbdulHakim\CoinGecko\Contracts\CoinGeckoInterface;
 use MusheAbdulHakim\CoinGecko\Facades\CoinGecko as CoinGeckoFacade;
 
 /**
