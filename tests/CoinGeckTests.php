@@ -19,7 +19,7 @@ use MusheAbdulHakim\CoinGecko\Api\Simple;
 use MusheAbdulHakim\CoinGecko\Api\Trending;
 use MusheAbdulHakim\CoinGecko\CoinGecko;
 use MusheAbdulHakim\CoinGecko\Tests\TestCase;
-
+use Psr\Http\Message\ResponseInterface;
 
 /**
  * Class CoinGecko
@@ -122,5 +122,20 @@ class CoinGeckTests extends TestCase
     {
         $coingecko = new CoinGecko();
         $this->assertInstanceOf(Companies::class, $coingecko->companies());
+    }
+
+    public function testGetLastResponseIsNull()
+    {
+        $coingecko = new CoinGecko();
+        $this->assertNull($coingecko->getLastResponse());
+    }
+
+    public function testSetLastResponse()
+    {
+        $coingecko = new CoinGecko();
+        $response = $this->createMock(ResponseInterface::class);
+        $coingecko->setLastResponse($response);
+
+        $this->assertInstanceOf(ResponseInterface::class, $coingecko->getLastResponse());
     }
 }
