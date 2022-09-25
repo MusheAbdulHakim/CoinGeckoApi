@@ -1,11 +1,13 @@
 <?php
+
 namespace MusheAbdulHakim\CoinGecko;
 
 use GuzzleHttp\Client;
 use MusheAbdulHakim\CoinGecko\Response;
 use MusheAbdulHakim\CoinGecko\CoinGecko;
 
-class Request {
+class Request
+{
 
     protected $config;
 
@@ -13,12 +15,13 @@ class Request {
 
     protected $response;
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->client = new CoinGecko();
         $this->response = new Response();
         $this->config = new Config();
     }
-    
+
     /**
      * Make a get request to api endpoint.
      * 
@@ -27,10 +30,11 @@ class Request {
      * @return array
      * @throws Exception
      */
-    public function get(string $uri, array $query = []): array {
-        $url = $this->client->getVersion().'/'.$uri;
+    public function get(string $uri, array $query = []): array
+    {
+        $url = $this->client->getVersion() . '/' . $uri;
         $api_key = $this->config->get('api_key');
-        if(!empty($api_key)){
+        if (!empty($api_key)) {
             $query['x_cg_pro_api_key'] = $api_key;
         }
         $http_response = $this->client->getClient()->get(
@@ -41,7 +45,5 @@ class Request {
         );
         $this->client->setLastResponse($http_response);
         return $this->response->toArray($http_response);
-        
     }
-
 }

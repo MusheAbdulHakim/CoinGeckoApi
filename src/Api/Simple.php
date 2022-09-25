@@ -1,11 +1,13 @@
 <?php
+
 declare(strict_types=1);
 
 namespace MusheAbdulHakim\CoinGecko\Api;
 
 use MusheAbdulHakim\CoinGecko\Request;
 
-class Simple extends Request {
+class Simple extends Request
+{
 
     /**
      * price(s) of cryptocurrency
@@ -20,7 +22,8 @@ class Simple extends Request {
      * @param array $params
      * @return void
      */
-    public function getPrice(string $ids, string $vs_currencies, array $params = []){
+    public function getPrice(string $ids, string $vs_currencies, array $params = [])
+    {
         $params['ids'] = $ids;
         $params['vs_currencies'] = $vs_currencies;
         return $this->get('/simple/price', $params);
@@ -50,8 +53,8 @@ class Simple extends Request {
      * @return array
      * @throws Exception
      */
-    public function getSupportedVsCurrencies(){
+    public function getSupportedVsCurrencies()
+    {
         return $this->get('/simple/supported_vs_currencies');
     }
-
 }

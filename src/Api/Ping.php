@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace MusheAbdulHakim\CoinGecko\Api;
@@ -6,7 +7,8 @@ namespace MusheAbdulHakim\CoinGecko\Api;
 use MusheAbdulHakim\CoinGecko\Request;
 
 
-class Ping extends Request {
+class Ping extends Request
+{
 
     /**
      * @return array
@@ -16,5 +18,4 @@ class Ping extends Request {
     {
         return $this->get('/ping');
     }
-
 }

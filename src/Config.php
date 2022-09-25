@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace MusheAbdulHakim\CoinGecko;
@@ -17,7 +18,7 @@ class Config
     /**
      * Config file name
      */
-    CONST CONFIG_FILE_NAME = "coingecko";
+    const CONFIG_FILE_NAME = "coingecko";
 
     /**
      * @var  \Illuminate\Config\Repository
@@ -55,8 +56,8 @@ class Config
         // check if this laravel specific function `config_path()` exist (means this package is used inside
         // a laravel framework). If so then load then try to load the laravel config file if it exist.
         if (function_exists('config_path')) {
-            $file = config_path(). '/' . self::CONFIG_FILE_NAME . '.php';
-            if(file_exists($file)){
+            $file = config_path() . '/' . self::CONFIG_FILE_NAME . '.php';
+            if (file_exists($file)) {
                 $config_path = config_path();
             }
         }

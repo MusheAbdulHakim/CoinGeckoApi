@@ -1,4 +1,5 @@
 <?php
+
 namespace MusheAbdulHakim\CoinGecko\ServiceProviders;
 
 use Illuminate\Support\ServiceProvider;
@@ -40,14 +41,14 @@ class CoinGeckoServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        
+
         /*
         |--------------------------------------------------------------------------
         | Implementation Config Merge
         |--------------------------------------------------------------------------
         */
         $this->mergeConfig();
-        
+
         /*
         |--------------------------------------------------------------------------
         | Implementation Bindings
@@ -85,9 +86,10 @@ class CoinGeckoServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function mergeConfig(){
+    public function mergeConfig()
+    {
         $config = __DIR__ . '/Config/coingecko.php';
-        $this->mergeConfigFrom($config,'coingecko');
+        $this->mergeConfigFrom($config, 'coingecko');
     }
 
     /**
@@ -113,7 +115,7 @@ class CoinGeckoServiceProvider extends ServiceProvider
 
         // Register 'CoinGecko' Alias, So users don't have to add the Alias to the 'app/config/app.php'
         $this->app->booting(function () {
-            $this->app->alias(CoinGeckoFacade::class,'CoinGecko');
+            $this->app->alias(CoinGeckoFacade::class, 'CoinGecko');
         });
     }
 
@@ -128,6 +130,4 @@ class CoinGeckoServiceProvider extends ServiceProvider
             CoinGecko::class
         ];
     }
-
-
 }

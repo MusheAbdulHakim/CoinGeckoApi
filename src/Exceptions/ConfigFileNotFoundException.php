@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace MusheAbdulHakim\CoinGecko\Exceptions;
@@ -10,5 +11,4 @@ namespace MusheAbdulHakim\CoinGecko\Exceptions;
  */
 class ConfigFileNotFoundException extends Exception
 {
-
 }

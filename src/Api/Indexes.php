@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace MusheAbdulHakim\CoinGecko\Api;
@@ -30,7 +31,7 @@ class Indexes extends Request
      */
     public function getIndex(string $market_id, string $id): array
     {
-        return $this->get('/indexes/'. $market_id. '/' . $id);
+        return $this->get('/indexes/' . $market_id . '/' . $id);
     }
 
     /**

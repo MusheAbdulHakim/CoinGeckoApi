@@ -1,11 +1,13 @@
 <?php
+
 declare(strict_types=1);
 
 namespace MusheAbdulHakim\CoinGecko\Api;
 
 use MusheAbdulHakim\CoinGecko\Request;
 
-class Contract extends Request {
+class Contract extends Request
+{
 
     /**
      * @param string $id
@@ -54,5 +56,4 @@ class Contract extends Request {
         $params['to'] = $to;
         return $this->get('/coins/' . $id . '/contract/' . $contractAddress . '/market_chart/range', $params);
     }
-
 }

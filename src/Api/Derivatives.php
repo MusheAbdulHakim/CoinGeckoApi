@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace MusheAbdulHakim\CoinGecko\Api;
@@ -6,13 +7,15 @@ namespace MusheAbdulHakim\CoinGecko\Api;
 use MusheAbdulHakim\CoinGecko\Request;
 
 
-class Derivatives extends Request {
-/**
+class Derivatives extends Request
+{
+    /**
      * @param array $params
      * @return array
      * @throws Exception
      */
-    public function getDerivatives(array $params = []): array {
+    public function getDerivatives(array $params = []): array
+    {
         return $this->get('/derivatives', $params);
     }
 
@@ -21,7 +24,8 @@ class Derivatives extends Request {
      * @return array
      * @throws Exception
      */
-    public function getExchanges(array $params = []): array {
+    public function getExchanges(array $params = []): array
+    {
         return $this->get('/derivatives/exchanges', $params);
     }
 
@@ -31,7 +35,8 @@ class Derivatives extends Request {
      * @return array
      * @throws Exception
      */
-    public function getExchange(string $id, $params = []): array {
+    public function getExchange(string $id, $params = []): array
+    {
         return $this->get('/derivatives/exchanges/' . $id, $params);
     }
 
@@ -39,7 +44,8 @@ class Derivatives extends Request {
      * @return array
      * @throws Exception
      */
-    public function getExchangeList(): array {
+    public function getExchangeList(): array
+    {
         return $this->get('/derivatives/exchanges/list');
     }
 }

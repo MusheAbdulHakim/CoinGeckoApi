@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace MusheAbdulHakim\CoinGecko\Api;
@@ -8,7 +9,8 @@ use MusheAbdulHakim\CoinGecko\Request;
 /**
  * Get public companies bitcoin or ethereum holdings
  */
-class Companies extends Request {
+class Companies extends Request
+{
 
     /**
      * Get public companies bitcoin or ethereum holdings
@@ -16,9 +18,9 @@ class Companies extends Request {
      * @param string $coin_id
      * @return array
      */
-    public function getPublicTreasury(string $coin_id): array {
+    public function getPublicTreasury(string $coin_id): array
+    {
 
-        return $this->get('companies/public_treasury/'.$coin_id);
+        return $this->get('companies/public_treasury/' . $coin_id);
     }
-
 }

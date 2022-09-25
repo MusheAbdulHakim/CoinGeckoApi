@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace MusheAbdulHakim\CoinGecko;
@@ -10,7 +11,8 @@ use Psr\Http\Message\ResponseInterface;
  * Class Response
  * @package MusheAbdulHakim\CoinGecko
  */
-class Response {
+class Response
+{
 
     /**
      * Convert Api response to Array. Else throws an Exception
@@ -19,7 +21,8 @@ class Response {
      * @return array
      * @throws Exception
      */
-    public function toArray(ResponseInterface $response): array {
+    public function toArray(ResponseInterface $response): array
+    {
         $body = (string) $response->getBody();
         if (strpos($response->getHeaderLine('Content-Type'), 'application/json') === 0) {
             $content = json_decode($body, true);

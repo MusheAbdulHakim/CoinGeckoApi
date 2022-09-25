@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace MusheAbdulHakim\CoinGecko;
@@ -20,7 +21,8 @@ use MusheAbdulHakim\CoinGecko\Api\Derivatives;
 use MusheAbdulHakim\CoinGecko\Api\ExchangeRates;
 use MusheAbdulHakim\CoinGecko\Api\AssetPlatforms;
 
-class CoinGecko {
+class CoinGecko
+{
 
 
     /**
@@ -65,7 +67,8 @@ class CoinGecko {
      *
      * @return Client
      */
-    public function getClient(): Client {
+    public function getClient(): Client
+    {
         return $this->http;
     }
 
@@ -74,7 +77,8 @@ class CoinGecko {
      *
      * @return string
      */
-    public function getVersion(): string {
+    public function getVersion(): string
+    {
         return $this->version;
     }
 
@@ -84,7 +88,8 @@ class CoinGecko {
      * @param string $version
      * @return string
      */
-    public function setVersion(string $version): string {
+    public function setVersion(string $version): string
+    {
         return ($this->version = $version);
     }
 
@@ -99,7 +104,8 @@ class CoinGecko {
         return $this->lastResponse;
     }
 
-    public function ping(): array {
+    public function ping(): array
+    {
         return (new Ping())->ping();
     }
 
@@ -119,11 +125,13 @@ class CoinGecko {
         return (new Contract());
     }
 
-    public function assetPlatforms(): AssetPlatforms {
+    public function assetPlatforms(): AssetPlatforms
+    {
         return (new AssetPlatforms());
     }
 
-    public function categories(): Categories {
+    public function categories(): Categories
+    {
         return (new Categories());
     }
 
@@ -137,12 +145,14 @@ class CoinGecko {
         return (new ExchangeRates());
     }
 
-    public function search(): Search {
+    public function search(): Search
+    {
 
         return (new Search());
     }
 
-    public function trending(): Trending {
+    public function trending(): Trending
+    {
         return (new Trending());
     }
 
@@ -163,8 +173,8 @@ class CoinGecko {
         return (new Globals());
     }
 
-    public function companies(){
+    public function companies()
+    {
         return (new Companies());
     }
 }
-

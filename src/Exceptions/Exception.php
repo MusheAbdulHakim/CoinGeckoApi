@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace MusheAbdulHakim\CoinGecko\Exceptions;
@@ -12,6 +13,4 @@ use Exception as CoreException;
  */
 class Exception extends CoreException
 {
-
 }
-

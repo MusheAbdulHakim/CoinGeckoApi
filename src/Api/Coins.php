@@ -1,11 +1,13 @@
 <?php
+
 declare(strict_types=1);
 
 namespace MusheAbdulHakim\CoinGecko\Api;
 
 use MusheAbdulHakim\CoinGecko\Request;
 
-class Coins extends Request {
+class Coins extends Request
+{
 
     /**
      * 	List all coins with id, name, and symbol
@@ -112,7 +114,4 @@ class Coins extends Request {
     {
         return $this->get('/coins/' . $id . '/status_updates', $params);
     }
-
 }
-
-

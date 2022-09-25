@@ -1,11 +1,13 @@
 <?php
+
 declare(strict_types=1);
 
 namespace MusheAbdulHakim\CoinGecko\Api;
 
 use MusheAbdulHakim\CoinGecko\Request;
 
-class Globals extends Request {
+class Globals extends Request
+{
 
     /**
      * Get cryptocurrency global data
