@@ -1,8 +1,11 @@
 <?php
+
 declare(strict_types=1);
 
 namespace MusheAbdulHakim\CoinGecko\Tests;
 
+use MusheAbdulHakim\CoinGecko\Api\AssetPlatforms;
+use MusheAbdulHakim\CoinGecko\Api\Categories;
 use MusheAbdulHakim\CoinGecko\Api\Coins;
 use MusheAbdulHakim\CoinGecko\Api\Companies;
 use MusheAbdulHakim\CoinGecko\Api\Contract;
@@ -13,6 +16,7 @@ use MusheAbdulHakim\CoinGecko\Api\Globals;
 use MusheAbdulHakim\CoinGecko\Api\Indexes;
 use MusheAbdulHakim\CoinGecko\Api\Search;
 use MusheAbdulHakim\CoinGecko\Api\Simple;
+use MusheAbdulHakim\CoinGecko\Api\Trending;
 use MusheAbdulHakim\CoinGecko\CoinGecko;
 use MusheAbdulHakim\CoinGecko\Tests\TestCase;
 
@@ -24,69 +28,99 @@ use MusheAbdulHakim\CoinGecko\Tests\TestCase;
  * @package  MusheAbdulHakim\CoinGecko\Tests
  * @author   Mushe Abdul-Hakim <musheabdulhakim99@gmail.com>
  */
-class CoinGeckTests extends TestCase {
+class CoinGeckTests extends TestCase
+{
 
-    public function testClient(){
+    public function testClient()
+    {
         $coingecko = new CoinGecko();
         $this->assertIsObject($coingecko->getClient());
     }
-    
 
-    public function testPing(){
+
+    public function testPing()
+    {
         $coingecko = new CoinGecko();
         $this->assertIsArray($coingecko->ping());
     }
-    
-    public function testSimple(){
+
+    public function testSimple()
+    {
         $coingecko = new CoinGecko();
         $this->assertInstanceOf(Simple::class, $coingecko->simple());
     }
 
-    public function testCoins(){
+    public function testCoins()
+    {
         $coingecko = new CoinGecko();
         $this->assertInstanceOf(Coins::class, $coingecko->coins());
     }
 
-    public function testContract(){
+    public function testContract()
+    {
         $coingecko = new CoinGecko();
         $this->assertInstanceOf(Contract::class, $coingecko->contract());
     }
 
-    public function testExchanges(){
+    public function testassetPlatforms()
+    {
+        $coingecko = new CoinGecko();
+        $this->assertInstanceOf(AssetPlatforms::class, $coingecko->assetPlatforms());
+    }
+
+    public function testCategories()
+    {
+        $coingecko = new CoinGecko();
+        $this->assertInstanceOf(Categories::class, $coingecko->categories());
+    }
+
+    public function testExchanges()
+    {
         $coingecko = new CoinGecko();
         $this->assertInstanceOf(Exchanges::class, $coingecko->exchanges());
     }
 
+    public function testTrending()
+    {
+        $coingecko = new CoinGecko();
+        $this->assertInstanceOf(Trending::class, $coingecko->trending());
+    }
 
-    public function testSearch(){
+
+    public function testSearch()
+    {
         $coingecko = new CoinGecko();
         $this->assertInstanceOf(Search::class, $coingecko->search());
     }
 
-    public function testIndexes(){
+    public function testIndexes()
+    {
         $coingecko = new CoinGecko();
         $this->assertInstanceOf(Indexes::class, $coingecko->indexes());
     }
 
-    public function testDerivatives(){
+    public function testDerivatives()
+    {
         $coingecko = new CoinGecko();
         $this->assertInstanceOf(Derivatives::class, $coingecko->derivatives());
     }
 
-   
-    public function testExchangeRates(){
+
+    public function testExchangeRates()
+    {
         $coingecko = new CoinGecko();
         $this->assertInstanceOf(ExchangeRates::class, $coingecko->exchangeRates());
     }
 
-    public function testGlobals(){
+    public function testGlobals()
+    {
         $coingecko = new CoinGecko();
         $this->assertInstanceOf(Globals::class, $coingecko->globals());
     }
 
-    public function companies(){
+    public function companies()
+    {
         $coingecko = new CoinGecko();
         $this->assertInstanceOf(Companies::class, $coingecko->companies());
     }
-
 }
