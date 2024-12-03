@@ -27,3 +27,4 @@ composer.lock
 *.swp
 *.swo
 .env
+index.php
