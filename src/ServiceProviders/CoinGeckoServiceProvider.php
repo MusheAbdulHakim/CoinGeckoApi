@@ -74,7 +74,7 @@ class CoinGeckoServiceProvider extends ServiceProvider
      */
     private function implementationBindings(): void
     {
-        $this->app->bind(CoinGecko::class, fn($app): \MusheAbdulHakim\CoinGecko\CoinGecko => new CoinGecko($app));
+        $this->app->bind(CoinGecko::class, fn ($app): \MusheAbdulHakim\CoinGecko\CoinGecko => new CoinGecko($app));
     }
 
     /**
@@ -103,7 +103,7 @@ class CoinGeckoServiceProvider extends ServiceProvider
     private function facadeBindings(): void
     {
         // Register 'coingecko.coingecko' instance container
-        $this->app['coingecko'] = $this->app->share(fn($app) => $app->make(CoinGecko::class));
+        $this->app['coingecko'] = $this->app->share(fn ($app) => $app->make(CoinGecko::class));
 
         // Register 'CoinGecko' Alias, So users don't have to add the Alias to the 'app/config/app.php'
         $this->app->booting(function (): void {

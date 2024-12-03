@@ -19,13 +19,10 @@ class Config
      */
     public const CONFIG_FILE_NAME = "coingecko";
 
-    /**
-     * 
-     * @var Repository
-     */
+
     private readonly \Illuminate\Config\Repository $config;
 
-    
+
     public function __construct()
     {
         $configPath = $this->configurationPath();
@@ -61,12 +58,8 @@ class Config
         return $config_path;
     }
 
-    /**
-     * 
-     * @param mixed $key
-     * @return string
-     */
-    public function get($key): string
+
+    public function get(mixed $key): string
     {
         return $this->config->get($key);
     }
