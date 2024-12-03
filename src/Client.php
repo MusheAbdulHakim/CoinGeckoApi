@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 
 declare(strict_types=1);
 
@@ -17,13 +18,20 @@ final readonly class Client implements ClientContract
     {
         // ..
     }
-    
-    public function ping()
-    {
-        return (new Ping($this->transporter))->ping();
-    }
-    
 
-    
+    public function ping(): Ping
+    {
+        return new Ping($this->transporter);
+    }
+
+   /**
+    * 
+    * @return array<mixed>|string
+    */
+   public function pingServer()
+   {
+    return (new Ping($this->transporter))->ping();
+   }
+
 
 }

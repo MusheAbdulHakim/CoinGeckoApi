@@ -1,12 +1,18 @@
-<?php 
+<?php
+
 declare(strict_types=1);
 
 namespace MusheAbdulHakim\CoinGecko\Contracts;
 
+use MusheAbdulHakim\CoinGecko\Api\Ping;
+
 interface ClientContract
 {
-    
-    public function ping();
+  
+    /**
+     * 
+     * @return \MusheAbdulHakim\CoinGecko\Api\Ping
+     */
+    public function ping(): Ping;
 
-    
 }

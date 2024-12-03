@@ -20,16 +20,15 @@ use Psr\Http\Message\ResponseInterface;
 
 final class Factory
 {
-
     /**
      * The API Version.
      */
     private ?string $apiVersion = null;
 
 
-     /**
-     * The base URI for the requests.
-     */
+    /**
+    * The base URI for the requests.
+    */
     private ?string $baseUri = null;
 
 
@@ -44,13 +43,7 @@ final class Factory
      */
     private ?ClientInterface $httpClient = null;
 
-    /**
-     * 
-     * @var  \MusheAbdulHakim\CoinGecko\Config
-     */
-    protected ?\MusheAbdulHakim\CoinGecko\Config $config;
 
-   
     /**
      * The HTTP headers for the requests.
      *
@@ -91,7 +84,7 @@ final class Factory
 
     public function withApiversion(string $version): self
     {
-        $this->apiVersion = trim((string) $version);
+        $this->apiVersion = trim($version);
         return $this;
     }
 
@@ -101,7 +94,7 @@ final class Factory
      */
     public function withBaseUri(string $baseUri): self
     {
-        $this->baseUri = trim((string) $baseUri);
+        $this->baseUri = trim($baseUri);
 
         return $this;
     }
@@ -186,7 +179,7 @@ final class Factory
     public function make(): Client
     {
         $headers = Headers::create();
-        
+
         $config = new Config();
 
         if ($this->apiKey !== null) {

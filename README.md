@@ -5,26 +5,32 @@
 
 
 ## Requirement
-- Git
 - Composer
-- php >= 7.4
+- php >= 8.2
 
 <a name="Installation"></a>
 ## Installation
 
 ```bash
-$ composer require musheabdulhakim/coingecko
+ composer require musheabdulhakim/coingecko
 ```
 
 ## Basic usage
 
+```php
+$coingecko = \MusheAbdulHakim\CoinGecko\CoinGecko::client('your-api-key','https://api.coingecko.com/api', 'v3');
+```
 
 ### Example
 ```php
-use MusheAbdulHakim\CoinGecko\CoinGecko;
-
-$coingecko = new CoinGecko();
+$coingecko = \MusheAbdulHakim\CoinGecko\CoinGecko::client('your-api-key');
 $ping = $coingecko->ping();
+
+$pingTest = $ping->ping();
+
+//or
+
+$coingecko->pingServer();
 
 ```
 
@@ -32,11 +38,11 @@ $ping = $coingecko->ping();
 Update api version, base url and api key
 ```php
 
-'version' => 'v3',
+'COINGECKO_API_VERSION' => 'v3',
 
-'base_url' => 'https://api.coingecko.com/api/',
+'COINGECKO_BASE_URI' => 'https://api.coingecko.com/api',
 
-'api_key' => '',
+'COINGECKO_API_KEY' => 'xxxxxxxxxxxxxxxxxxxxxx',
 
 ```
 

@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+
 namespace MusheAbdulHakim\CoinGecko\Api\Concerns;
 
 use MusheAbdulHakim\CoinGecko\Contracts\TransporterContract;

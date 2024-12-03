@@ -16,7 +16,7 @@ class Ping implements PingContract
     /**
      * @inheritDoc
      */
-    public function ping(): array
+    public function ping(): array|string
     {
         $payload = Payload::get("ping");
         return $this->transporter->requestObject($payload)->data();

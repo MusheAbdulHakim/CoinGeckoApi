@@ -14,22 +14,18 @@ use MusheAbdulHakim\CoinGecko\Exceptions\ConfigFileNotFoundException;
  */
 class Config
 {
-
     /**
      * Config file name
      */
-    const CONFIG_FILE_NAME = "coingecko";
+    public const CONFIG_FILE_NAME = "coingecko";
 
     /**
-     * @var  \Illuminate\Config\Repository
+     * 
+     * @var Repository
      */
-    private $config;
+    private readonly \Illuminate\Config\Repository $config;
 
-    /**
-     * Config constructor.
-     *
-     * @param \Illuminate\Config\Repository $config
-     */
+    
     public function __construct()
     {
         $configPath = $this->configurationPath();
@@ -66,11 +62,11 @@ class Config
     }
 
     /**
-     * @param $key
-     *
-     * @return  mixed
+     * 
+     * @param mixed $key
+     * @return string
      */
-    public function get($key)
+    public function get($key): string
     {
         return $this->config->get($key);
     }

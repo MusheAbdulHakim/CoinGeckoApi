@@ -11,11 +11,11 @@ final readonly class Response
 {
     /**
      * Creates a new Response value object.
-     *
-     * @param  mixed  $data
+     * 
+     * @param array<mixed>|string $data
      */
     private function __construct(
-        private mixed $data
+        private array|string $data
     ) {
         // ..
     }
@@ -24,9 +24,10 @@ final readonly class Response
      * Creates a new Response value object from the given data.
      *
      *
-     * @param  mixed $data
+     * @param array<mixed>|string $data
+     * @return \MusheAbdulHakim\CoinGecko\ValueObjects\Transporter\Response
      */
-    public static function from($data): self
+    public static function from(array|string $data): self
     {
         return new self($data);
     }
@@ -34,17 +35,19 @@ final readonly class Response
     /**
      * Returns the response data.
      *
-     * @return array<mixed>
+     * @return array<mixed>|string
      */
-    public function data(): array
+    public function data(): array|string
     {
         return $this->data;
     }
 
     /**
      * Get item from the response data.
+     * 
+     * @return array<mixed>|string
      */
-    public function get(string $key): mixed
+    public function get(string $key): array|string
     {
         // @phpstan-ignore-next-line
         return $this->data[$key];
