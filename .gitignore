@@ -21,7 +21,7 @@ Thumbs.db
 /.phpunit.cache
 /.php-cs-fixer.cache
 /.php-cs-fixer.php
-/composer.lock
+composer.lock
 /phpunit.xml
 /vendor/
 *.swp
