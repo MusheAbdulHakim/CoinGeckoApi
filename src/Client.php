@@ -5,6 +5,7 @@ declare(strict_types=1);
 
 namespace MusheAbdulHakim\CoinGecko;
 
+use MusheAbdulHakim\CoinGecko\Api\Coins;
 use MusheAbdulHakim\CoinGecko\Api\Ping;
 use MusheAbdulHakim\CoinGecko\Api\Simple;
 use MusheAbdulHakim\CoinGecko\Contracts\ClientContract;
@@ -38,5 +39,11 @@ final readonly class Client implements ClientContract
     {
         return new Simple($this->transporter);
     }
+
+    public function coins(): Coins
+    {
+        return new Coins($this->transporter);
+    }
+
 
 }
