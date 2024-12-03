@@ -1,44 +1,69 @@
 {
-  "name": "musheabdulhakim/coingecko",
-  "description": "CoinGecko API client for PHP and Laravel Applications.",
-  "license": "MIT",
-  "keywords": [
-    "CoinGecko",
-    "client",
-    "api", 
-    "php", 
-    "coingecko.com", 
-    "rest"
-  ],
-  "authors": [
-    {
-      "name": "Mushe Abdul-Hakim",
-      "email": "musheabdulhakim99@gmail.com",
-      "homepage": "https://github.com/musheabdulhakim"
-    }
-  ],
-  "require": {
-    "php": ">=7.4.29",
-    "guzzlehttp/guzzle": ">=7.5.0",
-    "illuminate/config": ">=8.83.23"
-  },
-  "require-dev": {
-    "phpunit/phpunit": ">=9.5.24",
-    "mockery/mockery": ">=1.5.0",
-    "symfony/var-dumper": ">=5.4.11"
-  },
-  "autoload": {
-    "psr-4": {
-      "MusheAbdulHakim\\CoinGecko\\": "src"
-    }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "MusheAbdulHakim\\CoinGecko\\Tests\\": "tests"
-    }
-  },
-  "scripts": {
-    "test": "phpunit"
-  },
-  "prefer-stable": true
+    "name": "musheabdulhakim/coingecko",
+    "description": "CoinGecko API client for PHP and Laravel Applications.",
+    "license": "MIT",
+    "keywords": [
+        "CoinGecko",
+        "client",
+        "api",
+        "php",
+        "coingecko.com",
+        "rest"
+    ],
+    "authors": [
+        {
+            "name": "Mushe Abdul-Hakim",
+            "email": "musheabdulhakim99@gmail.com",
+            "homepage": "https://github.com/musheabdulhakim"
+        }
+    ],
+    "require": {
+        "php": "^8.2|^8.3",
+        "illuminate/config": "^11.34",
+        "php-http/discovery": "^1.20",
+        "php-http/multipart-stream-builder": "^1.4",
+        "psr/http-client": "^1.0",
+        "psr/http-client-implementation": "*",
+        "psr/http-factory-implementation": "*",
+        "psr/http-message": "^2.0"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.65",
+        "guzzlehttp/guzzle": "^7.9",
+        "guzzlehttp/psr7": "^2.7",
+        "pestphp/pest": "^3.5",
+        "pestphp/pest-plugin-type-coverage": "^3.1",
+        "phpstan/phpstan": "^1.12",
+        "rector/rector": "^1.2",
+        "symfony/var-dumper": "^6.4.0|^7.2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "MusheAbdulHakim\\CoinGecko\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "MusheAbdulHakim\\CoinGecko\\Tests\\": "tests"
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "preferred-install": "dist",
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "php-http/discovery": false
+        }
+    },
+    "scripts": {
+        "lint": "php-cs-fixer fix .",
+        "test:lint": "php-cs-fixer fix . --dry-run",
+        "refacto": "rector",
+        "test:refacto": "rector --dry-run",
+        "test:types": "phpstan analyse --ansi",
+        "test:unit": "pest --colors=always",
+        "test": ["@test:lint", "@test:refacto", "@test:types", "@test:unit"]
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
 }
