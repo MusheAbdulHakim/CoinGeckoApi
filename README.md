@@ -1,6 +1,6 @@
 # CoinGeckoApi
-
-
+<!-- 
+i added a comment in readme.md file   -->
 **CoinGeckApi** is a PHP & Laravel Package, (Designed to help working with coingecko api easier and faster).
 
 
