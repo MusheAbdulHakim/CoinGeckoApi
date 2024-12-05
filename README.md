@@ -18,14 +18,14 @@ $ composer require musheabdulhakim/coingecko
 
 ## Basic usage
 
-
+<!-- 
 ### Example
 ```php
 use MusheAbdulHakim\CoinGecko\CoinGecko;
 
 $coingecko = new CoinGecko();
-$ping = $coingecko->ping();
-
+$ping = $coingecko->ping(); -->
+<!-- i comment some code part -->
 ```
 
 ### Configuration
