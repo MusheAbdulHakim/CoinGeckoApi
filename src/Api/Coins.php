@@ -120,6 +120,7 @@ final class Coins implements CoinsContract
      */
     public function getHistory(string $id, string $date, array $params = []): array|string
     {
+        $params['date'] = $date;
         $payload = Payload::get("coins/$id/history", $params);
         return $this->transporter->requestObject($payload)->data();
     }
@@ -129,6 +130,7 @@ final class Coins implements CoinsContract
      */
     public function history(string $id, string $date, array $params = []): array|string
     {
+        $params['date'] = $date;
         $payload = Payload::get("coins/$id/history", $params);
         return $this->transporter->requestObject($payload)->data();
     }
@@ -210,6 +212,8 @@ final class Coins implements CoinsContract
     */
     public function ohlcChart(string $id, string $vsCurrency, string $days, array $params = []): array|string
     {
+        $params['vs_currency'] = $vsCurrency;
+        $params['days'] = $days;
         $payload = Payload::get("coins/$id/ohlc", $params);
         return $this->transporter->requestObject($payload)->data();
     }
