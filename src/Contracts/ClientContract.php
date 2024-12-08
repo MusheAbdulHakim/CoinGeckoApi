@@ -16,6 +16,8 @@ use MusheAbdulHakim\CoinGecko\Api\Categories;
 use MusheAbdulHakim\CoinGecko\Api\Derivatives;
 use MusheAbdulHakim\CoinGecko\Api\ExchangeRate;
 use MusheAbdulHakim\CoinGecko\Api\AssetPlatforms;
+use MusheAbdulHakim\CoinGecko\Api\Companies;
+use MusheAbdulHakim\CoinGecko\Api\Globals;
 
 interface ClientContract
 {
@@ -44,6 +46,10 @@ interface ClientContract
 
     public function trending(): Trending;
 
+
+    public function globals(): Globals;
+
+    public function companies(): Companies;
 
 
 }

@@ -17,6 +17,8 @@ use MusheAbdulHakim\CoinGecko\Api\Categories;
 use MusheAbdulHakim\CoinGecko\Api\Derivatives;
 use MusheAbdulHakim\CoinGecko\Api\ExchangeRate;
 use MusheAbdulHakim\CoinGecko\Api\AssetPlatforms;
+use MusheAbdulHakim\CoinGecko\Api\Companies;
+use MusheAbdulHakim\CoinGecko\Api\Globals;
 use MusheAbdulHakim\CoinGecko\Contracts\ClientContract;
 use MusheAbdulHakim\CoinGecko\Contracts\TransporterContract;
 
@@ -98,6 +100,16 @@ final readonly class Client implements ClientContract
     public function trending(): Trending
     {
         return new Trending($this->transporter);
+    }
+
+    public function globals(): Globals
+    {
+        return new Globals($this->transporter);
+    }
+
+    public function companies(): Companies
+    {
+        return new Companies($this->transporter);
     }
 
 }
