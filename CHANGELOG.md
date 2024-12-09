@@ -14,5 +14,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
     3. sdk methods has also been revised to better usage.
     4. php-cs-fixer & rector added for linting & improving code quality
     5. Class method documentation for each class has been moved to the /docs folder
-    6. 
+    6. Overall code quality improvement for better maintainance in the future.
 
