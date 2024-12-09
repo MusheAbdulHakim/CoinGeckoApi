@@ -16,8 +16,7 @@ interface AssetPlatformsContract
 
     /**
      * 👑 Token Lists by Asset Platform ID
-     * 
-     * @param string $id
+     *
      * @return array<mixed>|string
      */
     public function get(string $id): array|string;
