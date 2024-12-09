@@ -4,21 +4,17 @@ declare(strict_types=1);
 
 namespace MusheAbdulHakim\CoinGecko\Api;
 
-use MusheAbdulHakim\CoinGecko\Request;
+use MusheAbdulHakim\CoinGecko\Api\Concerns\Transportable;
+use MusheAbdulHakim\CoinGecko\Contracts\Api\TrendingContract;
+use MusheAbdulHakim\CoinGecko\ValueObjects\Transporter\Payload;
 
-/**
- * Top-7 trending coins on CoinGecko as searched by users in the last 24 hours (Ordered by most popular first)
- */
-class Trending extends Request
+final class Trending implements TrendingContract
 {
+    use Transportable;
 
-    /**
-     * List trending coins by most popular first
-     *
-     * @return array
-     */
-    public function getList(): array
+    public function list(): array|string
     {
-        return $this->get('/search/trending')['coins'];
+        $payload = Payload::get("search/trending");
+        return $this->transporter->requestObject($payload)->data();
     }
 }

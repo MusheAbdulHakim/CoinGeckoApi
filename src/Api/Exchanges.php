@@ -4,70 +4,53 @@ declare(strict_types=1);
 
 namespace MusheAbdulHakim\CoinGecko\Api;
 
-use MusheAbdulHakim\CoinGecko\Request;
+use MusheAbdulHakim\CoinGecko\Api\Concerns\Transportable;
+use MusheAbdulHakim\CoinGecko\Contracts\Api\ExchangesContract;
+use MusheAbdulHakim\CoinGecko\ValueObjects\Transporter\Payload;
 
-class Exchanges extends Request
+final class Exchanges implements ExchangesContract
 {
+    use Transportable;
 
-    /**
-     * List all exchanges
-     * 
-     * @param array $params
-     * @return array
-     * @throws Exception
-     */
-    public function getExchanges(array $params = []): array
+
+    public function list(array $params = []): array|string
     {
-        return $this->get('/exchanges', $params);
+        $payload = Payload::get("exchanges", $params);
+        return $this->transporter->requestObject($payload)->data();
     }
 
-    /**
-     * Use this to obtain all the markets' id in order to make API calls
-     * 
-     * @return array
-     * @throws Exception
-     */
-    public function getList(): array
+    public function idMap(): array|string
     {
-        return $this->get('/exchanges/list');
+        $payload = Payload::get("exchanges/list");
+        return $this->transporter->requestObject($payload)->data();
     }
 
-    /**
-     * Get exchange volume in BTC and tickers
-     * 
-     * @param string $id
-     * @return array
-     * @throws Exception
-     */
-    public function getExchange(string $id): array
+    public function get(string $id): array|string
     {
-        return $this->get('/exchanges/' . $id);
+        $payload = Payload::get("exchanges/$id");
+        return $this->transporter->requestObject($payload)->data();
     }
 
-    /**
-     * 	Get exchange tickers
-     * 
-     * @param string $id
-     * @param array $params
-     * @return array
-     * @throws Exception
-     */
-    public function getTickers(string $id, array $params = []): array
+    public function tickers(string $id, array $params = []): array|string
     {
-        return $this->get('/exchanges/' . $id . '/tickers', $params);
+        $payload = Payload::get("exchanges/$id/tickers", $params);
+        return $this->transporter->requestObject($payload)->data();
+
+    }
+
+    public function volume(string $id, array $params = []): array|string
+    {
+        $payload = Payload::get("exchanges/$id/volume_chart", $params);
+        return $this->transporter->requestObject($payload)->data();
     }
 
 
-    /**
-     * Get volume_chart data for a given exchange
-     * 
-     * @param string $id
-     * @param string $days
-     * @return array
-     * @throws Exception
-     */
-    public function getVolumeChart(string $id, string $days): array
+    public function volumenWithin(string $id, int $from, int $to): array|string
     {
-        return $this->get('/exchanges/' . $id . '/volume_chart', ['days' => $days]);
+        $params['from'] = $from;
+        $params['to'] = $to;
+        $payload = Payload::get("exchanges/$id/volume_chart/range", $params);
+        return $this->transporter->requestObject($payload)->data();
     }
+
 }

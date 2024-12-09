@@ -4,23 +4,26 @@ declare(strict_types=1);
 
 namespace MusheAbdulHakim\CoinGecko\Api;
 
-use MusheAbdulHakim\CoinGecko\Request;
+use MusheAbdulHakim\CoinGecko\Api\Concerns\Transportable;
+use MusheAbdulHakim\CoinGecko\Contracts\Api\CompaniesContract;
+use MusheAbdulHakim\CoinGecko\ValueObjects\Transporter\Payload;
 
-/**
- * Get public companies bitcoin or ethereum holdings
- */
-class Companies extends Request
+final class Companies implements CompaniesContract
 {
+    use Transportable;
 
-    /**
-     * Get public companies bitcoin or ethereum holdings
-     *
-     * @param string $coin_id
-     * @return array
-     */
-    public function getPublicTreasury(string $coin_id): array
+
+    public function list(string $id): array|string
     {
+        $params['coin_id'] = $id;
+        $payload = Payload::get("coin_id", $params);
+        return $this->transporter->requestObject($payload)->data();
+    }
 
-        return $this->get('companies/public_treasury/' . $coin_id);
+    public function marketCap(string $days, array $params = []): array|string
+    {
+        $params['days'] = $days;
+        $payload = Payload::get("global/market_cap_chart", $params);
+        return $this->transporter->requestObject($payload)->data();
     }
 }

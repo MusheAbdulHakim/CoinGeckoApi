@@ -4,56 +4,47 @@ declare(strict_types=1);
 
 namespace MusheAbdulHakim\CoinGecko\Api;
 
-use MusheAbdulHakim\CoinGecko\Request;
+use MusheAbdulHakim\CoinGecko\Api\Concerns\Transportable;
+use MusheAbdulHakim\CoinGecko\Contracts\Api\ContractContract;
+use MusheAbdulHakim\CoinGecko\ValueObjects\Transporter\Payload;
 
-class Contract extends Request
+final class Contract implements ContractContract
 {
+    use Transportable;
 
     /**
-     * @param string $id
-     * @param string $contractAddress
-     * @return array
-     * @throws Exception
+     * @inheritDoc
      */
-    public function getContract(string $id, string $contractAddress): array
+    public function byToken(string $id, string $contactAddress): array|string
     {
-        return $this->get('/coins/' . $id . '/contract/' . $contractAddress);
+
+        $payload = Payload::get("coins/$id/contract/$contactAddress");
+        return $this->transporter->requestObject($payload)->data();
+
     }
 
     /**
-     * @param string $id
-     * @param string $contractAddress
-     * @param string $vsCurrency
-     * @param string $days
-     * @return array
-     * @throws Exception
+     * @inheritDoc
      */
-    public function getMarketChart(string $id, string $contractAddress, string $vsCurrency, string $days): array
+    public function history(string $id, string $contactAddress, string $vsCurrency, string $days, array $params = []): array|string
     {
-        $params = ['days' => $days, 'vs_currency' => $vsCurrency];
-
-        return $this->get('/coins/' . $id . '/contract/' . $contractAddress . '/market_chart', $params);
+        $params['vs_currency'] = $vsCurrency;
+        $params['days'] = $days;
+        $payload = Payload::get("coins/$id/contract/$contactAddress/market_chart", $params);
+        return $this->transporter->requestObject($payload)->data();
     }
 
     /**
-     * @param string $id
-     * @param string $contractAddress
-     * @param string $vsCurrency
-     * @param string $from
-     * @param string $to
-     * @return array
-     * @throws Exception
+     * @inheritDoc
      */
-    public function getMarketChartRange(
-        string $id,
-        string $contractAddress,
-        string $vsCurrency,
-        string $from,
-        string $to
-    ): array {
+    public function historyWithin(string $id, string $contactAddress, string $vsCurrency, int $from, int $to, array $params = []): array|string
+    {
         $params['vs_currency'] = $vsCurrency;
         $params['from'] = $from;
         $params['to'] = $to;
-        return $this->get('/coins/' . $id . '/contract/' . $contractAddress . '/market_chart/range', $params);
+        $payload = Payload::get("coins/$id/contract/$contactAddress/market_chart/range", $params);
+        return $this->transporter->requestObject($payload)->data();
     }
+
+
 }

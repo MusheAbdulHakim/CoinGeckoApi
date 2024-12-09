@@ -11,9 +11,9 @@ use MusheAbdulHakim\CoinGecko\Facades\CoinGecko as CoinGeckoFacade;
  *
  * @author  Mushe Abdul-Hakim  <musheabdulhakim99@gmail.com>
  */
+// @phpstan-ignore-next-line
 class CoinGeckoServiceProvider extends ServiceProvider
 {
-
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -24,7 +24,7 @@ class CoinGeckoServiceProvider extends ServiceProvider
     /**
      * Boot the package.
      */
-    public function boot()
+    public function boot(): void
     {
         /*
         |--------------------------------------------------------------------------
@@ -36,10 +36,8 @@ class CoinGeckoServiceProvider extends ServiceProvider
 
     /**
      * Register the service provider.
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
 
         /*
@@ -74,19 +72,15 @@ class CoinGeckoServiceProvider extends ServiceProvider
     /**
      * Implementation Bindings
      */
-    private function implementationBindings()
+    private function implementationBindings(): void
     {
-        $this->app->bind(CoinGecko::class, function ($app) {
-            return new CoinGecko($app);
-        });
+        $this->app->bind(CoinGecko::class, fn ($app): \MusheAbdulHakim\CoinGecko\CoinGecko => new CoinGecko($app));
     }
 
     /**
      * Merge Config published config with package config
-     *
-     * @return void
      */
-    public function mergeConfig()
+    public function mergeConfig(): void
     {
         $config = __DIR__ . '/Config/coingecko.php';
         $this->mergeConfigFrom($config, 'coingecko');
@@ -95,7 +89,7 @@ class CoinGeckoServiceProvider extends ServiceProvider
     /**
      * Publish the Config file from the Package to the App directory
      */
-    private function configPublisher()
+    private function configPublisher(): void
     {
         // When users execute Laravel's vendor:publish command, the config file will be copied to the specified location
         $this->publishes([
@@ -106,15 +100,13 @@ class CoinGeckoServiceProvider extends ServiceProvider
     /**
      * Facades Binding
      */
-    private function facadeBindings()
+    private function facadeBindings(): void
     {
         // Register 'coingecko.coingecko' instance container
-        $this->app['coingecko'] = $this->app->share(function ($app) {
-            return $app->make(CoinGecko::class);
-        });
+        $this->app['coingecko'] = $this->app->share(fn ($app) => $app->make(CoinGecko::class));
 
         // Register 'CoinGecko' Alias, So users don't have to add the Alias to the 'app/config/app.php'
-        $this->app->booting(function () {
+        $this->app->booting(function (): void {
             $this->app->alias(CoinGeckoFacade::class, 'CoinGecko');
         });
     }

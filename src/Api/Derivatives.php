@@ -4,48 +4,37 @@ declare(strict_types=1);
 
 namespace MusheAbdulHakim\CoinGecko\Api;
 
-use MusheAbdulHakim\CoinGecko\Request;
+use MusheAbdulHakim\CoinGecko\Api\Concerns\Transportable;
+use MusheAbdulHakim\CoinGecko\ValueObjects\Transporter\Payload;
+use MusheAbdulHakim\CoinGecko\Contracts\Api\DerivativesContract;
 
-
-class Derivatives extends Request
+final class Derivatives implements DerivativesContract
 {
-    /**
-     * @param array $params
-     * @return array
-     * @throws Exception
-     */
-    public function getDerivatives(array $params = []): array
+    use Transportable;
+
+    public function tickers(): array|string
     {
-        return $this->get('/derivatives', $params);
+        $payload = Payload::get("derivatives");
+        return $this->transporter->requestObject($payload)->data();
     }
 
-    /**
-     * @param array $params
-     * @return array
-     * @throws Exception
-     */
-    public function getExchanges(array $params = []): array
+    public function exchanges(array $params = []): array|string
     {
-        return $this->get('/derivatives/exchanges', $params);
+        $payload = Payload::get("derivatives/exchanges", $params);
+        return $this->transporter->requestObject($payload)->data();
     }
 
-    /**
-     * @param string $id
-     * @param array $params
-     * @return array
-     * @throws Exception
-     */
-    public function getExchange(string $id, $params = []): array
+
+    public function getExchange(string $id, array $params = []): array|string
     {
-        return $this->get('/derivatives/exchanges/' . $id, $params);
+        $payload = Payload::get("derivatives/exchanges/$id", $params);
+        return $this->transporter->requestObject($payload)->data();
     }
 
-    /**
-     * @return array
-     * @throws Exception
-     */
-    public function getExchangeList(): array
+    public function exchangeIds(): array|string
     {
-        return $this->get('/derivatives/exchanges/list');
+        $payload = Payload::get("derivatives/exchanges/list");
+        return $this->transporter->requestObject($payload)->data();
+
     }
 }

@@ -4,18 +4,27 @@ declare(strict_types=1);
 
 namespace MusheAbdulHakim\CoinGecko\Api;
 
-use MusheAbdulHakim\CoinGecko\Request;
+use MusheAbdulHakim\CoinGecko\Api\Concerns\Transportable;
+use MusheAbdulHakim\CoinGecko\ValueObjects\Transporter\Payload;
+use MusheAbdulHakim\CoinGecko\Contracts\Api\AssetPlatformsContract;
 
-class AssetPlatforms extends Request
+final class AssetPlatforms implements AssetPlatformsContract
 {
+    use Transportable;
 
     /**
-     * List all asset platforms
-     *
-     * @return array
+     * @inheritDoc
      */
-    public function getList(): array
+    public function list(array $params = []): array|string
     {
-        return $this->get('/asset_platforms');
+        $payload = Payload::get("asset_platforms", $params);
+        return $this->transporter->requestObject($payload)->data();
     }
+
+    public function get(string $id): array|string
+    {
+        $payload = Payload::get("token_lists/$id/all.json");
+        return $this->transporter->requestObject($payload)->data();
+    }
+
 }

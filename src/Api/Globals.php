@@ -4,30 +4,23 @@ declare(strict_types=1);
 
 namespace MusheAbdulHakim\CoinGecko\Api;
 
-use MusheAbdulHakim\CoinGecko\Request;
+use MusheAbdulHakim\CoinGecko\Api\Concerns\Transportable;
+use MusheAbdulHakim\CoinGecko\Contracts\Api\GlobalContract;
+use MusheAbdulHakim\CoinGecko\ValueObjects\Transporter\Payload;
 
-class Globals extends Request
+final class Globals implements GlobalContract
 {
+    use Transportable;
 
-    /**
-     * Get cryptocurrency global data
-     * 
-     * @return array
-     * @throws Exception
-     */
-    public function getGlobal(): array
+    public function list(): array|string
     {
-        return $this->get('/global');
+        $payload = Payload::get("global");
+        return $this->transporter->requestObject($payload)->data();
     }
 
-    /**
-     * Get Top 100 Cryptocurrency Global Decentralized Finance(defi) data
-     * 
-     * @return array
-     * @throws Exception
-     */
-    public function getGlobalDecentralizedFinanceDefi(): array
+    public function defi(): array|string
     {
-        return $this->get('/global/decentralized_finance_defi');
+        $payload = Payload::get("global/decentralized_finance_defi");
+        return $this->transporter->requestObject($payload)->data();
     }
 }

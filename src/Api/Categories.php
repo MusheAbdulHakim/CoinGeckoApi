@@ -4,31 +4,29 @@ declare(strict_types=1);
 
 namespace MusheAbdulHakim\CoinGecko\Api;
 
-use MusheAbdulHakim\CoinGecko\Request;
+use MusheAbdulHakim\CoinGecko\Api\Concerns\Transportable;
+use MusheAbdulHakim\CoinGecko\Contracts\Api\CategoriesContract;
+use MusheAbdulHakim\CoinGecko\ValueObjects\Transporter\Payload;
 
-
-class Categories extends Request
+final class Categories implements CategoriesContract
 {
+    use Transportable;
 
     /**
-     * List all categories
-     *
-     * @return array
-     */
-    public function getList(): array
+    * @inheritDoc
+    */
+    public function list(): array|string
     {
-        return $this->get('/coins/categories/list');
+        $payload = Payload::get("coins/categories/list");
+        return $this->transporter->requestObject($payload)->data();
     }
 
     /**
-     * List all categories with market data
-     *
-     * @param string $order
-     * @return array
+     * @inheritDoc
      */
-    public function getListWithMarketData(string $order = 'market_cap_desc'): array
+    public function listWithData(array $params = []): array|string
     {
-        $params['order'] = $order;
-        return $this->get('/coins/categories', $params);
+        $payload = Payload::get("coins/categories", $params);
+        return $this->transporter->requestObject($payload)->data();
     }
 }

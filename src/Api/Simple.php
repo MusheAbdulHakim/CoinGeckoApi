@@ -4,57 +4,37 @@ declare(strict_types=1);
 
 namespace MusheAbdulHakim\CoinGecko\Api;
 
-use MusheAbdulHakim\CoinGecko\Request;
+use MusheAbdulHakim\CoinGecko\Api\Concerns\Transportable;
+use MusheAbdulHakim\CoinGecko\Contracts\Api\SimpleContract;
+use MusheAbdulHakim\CoinGecko\ValueObjects\Transporter\Payload;
 
-class Simple extends Request
+final class Simple implements SimpleContract
 {
+    use Transportable;
 
-    /**
-     * price(s) of cryptocurrency
-     *
-     * @param string $ids 
-     *  id of coins, comma-separated if querying more than 1 coin
-     * 
-     * @param string $vs_currencies 
-     *  vs_currency of coins, comma-separated if querying more than 1 vs_currency
-     *  refers to @method getSupportedVsCurrencies()
-     * 
-     * @param array $params
-     * @return void
-     */
-    public function getPrice(string $ids, string $vs_currencies, array $params = [])
+
+    public function getPrice(string $ids, string $vsCurrencies, array $params = []): array|string
     {
         $params['ids'] = $ids;
-        $params['vs_currencies'] = $vs_currencies;
-        return $this->get('/simple/price', $params);
+        $params['vs_currencies'] = $vsCurrencies;
+        $payload = Payload::get("simple/price", $params);
+        return $this->transporter->requestObject($payload)->data();
     }
 
-    /**
-     * @param string $id
-     * @param string $contractAddresses
-     * @param string $vsCurrencies
-     * @param array $params
-     * @return array
-     * @throws Exception
-     */
-    public function getTokenPrice(
-        string $id,
-        string $contractAddresses,
-        string $vsCurrencies,
-        array $params = []
-    ): array {
-        $params['contract_addresses'] = $contractAddresses;
+    public function getTokenPrice(string $id, string $contractAddress, string $vsCurrencies, array $params = []): array|string
+    {
+        $params['contract_addresses'] = $contractAddress;
         $params['vs_currencies'] = $vsCurrencies;
 
-        return $this->get('/simple/token_price/' . $id, $params);
+        $payload = Payload::get("simple/token_price/$id", $params);
+        return $this->transporter->requestObject($payload)->data();
     }
 
-    /**
-     * @return array
-     * @throws Exception
-     */
-    public function getSupportedVsCurrencies()
+    public function getSupportedVsCurrencies(): array|string
     {
-        return $this->get('/simple/supported_vs_currencies');
+        $payload = Payload::get("simple/supported_vs_currencies");
+        return $this->transporter->requestObject($payload)->data();
     }
+
+
 }

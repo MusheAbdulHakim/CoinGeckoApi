@@ -14,7 +14,6 @@ use MusheAbdulHakim\CoinGecko\CoinGecko as CoinGeckoService;
  */
 class CoinGecko extends Facade
 {
-
     /**
      * Get the registered name of the component.
      *

@@ -4,15 +4,17 @@ declare(strict_types=1);
 
 namespace MusheAbdulHakim\CoinGecko\Api;
 
-use MusheAbdulHakim\CoinGecko\Request;
+use MusheAbdulHakim\CoinGecko\Api\Concerns\Transportable;
+use MusheAbdulHakim\CoinGecko\Contracts\Api\SearchContract;
+use MusheAbdulHakim\CoinGecko\ValueObjects\Transporter\Payload;
 
-class Search extends Request
+final class Search implements SearchContract
 {
+    use Transportable;
 
-    public function query(string $query): array
+    public function query(array $params = []): array|string
     {
-        $params = [];
-        $params['query'] = $query;
-        return $this->get('/search', $params);
+        $payload = Payload::get("search", $params);
+        return $this->transporter->requestObject($payload)->data();
     }
 }

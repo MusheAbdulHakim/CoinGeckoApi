@@ -8,27 +8,27 @@ return [
     |--------------------------------------------------------------------------
     |
     */
-    'version' => 'v3',
+    'COINGECKO_API_VERSION' => 'v3',
 
     /**
      * Base Api Url.
-     * 
-     * Note: 
-     *  If you are using api pro version, 
-     *  Replace with https://pro-api.coingecko.com/api/
-     *  Make sure it ends with slash.
-     * 
-     * 
+     *
+     * Note:
+     *  If you are using api pro version,
+     *  Replace with https://pro-api.coingecko.com/api
+     *
+     *
+     *
      */
-    'base_url' => 'https://api.coingecko.com/api/',
+    'COINGECKO_BASE_URI' => 'https://api.coingecko.com/api',
 
     /**
      * CoinGecko Api Key.
-     * 
-     * Note: 
+     *
+     * Note:
      *  Pro Api Users only.
-     * 
+     *
      */
-    'api_key' => '',
+    'COINGECKO_API_KEY' => '',
 
 ];
