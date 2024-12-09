@@ -1,7 +1,7 @@
 <div align="center">
 <img src="art/example.png" height="100" alt="CoinGecko client example">
     <p align="center">
-        <a href="https://github.com/MusheAbdulHakim//actions"><img alt="GitHub Workflow Status (master)" src="https://github.com/MusheAbdulHakim/gohighlevel-php-sdk/actions/workflows/tests.yml/badge.svg"></a>
+        <a href="https://github.com/MusheAbdulHakim//actions"><img alt="GitHub Workflow Status (master)" src="https://github.com/MusheAbdulHakim/coingeckoapi/actions/workflows/tests.yml/badge.svg"></a>
         <a href="https://packagist.org/packages/musheabdulhakim/coingecko"><img alt="Total Downloads" src="https://img.shields.io/packagist/dt/musheabdulhakim/coingecko"></a>
         <a href="https://packagist.org/packages/musheabdulhakim/coingecko"><img alt="Latest Version" src="https://img.shields.io/packagist/v/musheabdulhakim/coingecko"></a>
         <a href="https://packagist.org/packages/musheabdulhakim/coingecko"><img alt="License" src="https://img.shields.io/packagist/l/musheabdulhakim/coingecko"></a>
