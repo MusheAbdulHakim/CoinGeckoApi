@@ -8,7 +8,6 @@ interface CompaniesContract
 {
     /**
      * Public Companies Holdings
-     * @param string $id
      * @return array<mixed>|string
      */
     public function list(string $id): array|string;

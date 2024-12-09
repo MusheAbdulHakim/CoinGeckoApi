@@ -43,4 +43,11 @@ interface ExchangesContract
      */
     public function volume(string $id, array $params = []): array|string;
 
+
+    /**
+     * 💼 Exchange Volume Chart within Time Range by ID
+     *
+     * @return array<mixed>|string
+     */
+    public function volumenWithin(string $id, int $from, int $to): array|string;
 }

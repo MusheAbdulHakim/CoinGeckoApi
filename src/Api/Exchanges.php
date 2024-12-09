@@ -43,4 +43,14 @@ final class Exchanges implements ExchangesContract
         $payload = Payload::get("exchanges/$id/volume_chart", $params);
         return $this->transporter->requestObject($payload)->data();
     }
+
+
+    public function volumenWithin(string $id, int $from, int $to): array|string
+    {
+        $params['from'] = $from;
+        $params['to'] = $to;
+        $payload = Payload::get("exchanges/$id/volume_chart/range", $params);
+        return $this->transporter->requestObject($payload)->data();
+    }
+
 }
