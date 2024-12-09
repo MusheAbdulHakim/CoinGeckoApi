@@ -12,4 +12,13 @@ interface CompaniesContract
      */
     public function list(string $id): array|string;
 
+
+    /**
+     * 💼 Global Market Cap Chart Data
+     *
+     * @param array<string> $params
+     * @return array<mixed>|string
+     */
+    public function marketCap(string $days, array $params = []): array|string;
+
 }

@@ -19,4 +19,11 @@ final class Companies implements CompaniesContract
         $payload = Payload::get("coin_id", $params);
         return $this->transporter->requestObject($payload)->data();
     }
+
+    public function marketCap(string $days, array $params = []): array|string
+    {
+        $params['days'] = $days;
+        $payload = Payload::get("global/market_cap_chart", $params);
+        return $this->transporter->requestObject($payload)->data();
+    }
 }
