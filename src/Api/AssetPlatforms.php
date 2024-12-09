@@ -20,4 +20,11 @@ final class AssetPlatforms implements AssetPlatformsContract
         $payload = Payload::get("asset_platforms", $params);
         return $this->transporter->requestObject($payload)->data();
     }
+    
+    public function get(string $id): array|string
+    {
+        $payload = Payload::get("token_lists/$id/all.json");
+        return $this->transporter->requestObject($payload)->data();
+    }
+
 }

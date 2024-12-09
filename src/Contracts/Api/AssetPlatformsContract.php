@@ -12,4 +12,14 @@ interface AssetPlatformsContract
      * @return array<mixed>|string
      */
     public function list(array $params = []): array|string;
+
+
+    /**
+     * 👑 Token Lists by Asset Platform ID
+     * 
+     * @param string $id
+     * @return array<mixed>|string
+     */
+    public function get(string $id): array|string;
+
 }
