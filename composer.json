@@ -64,6 +64,16 @@
         "test:unit": "pest --colors=always",
         "test": ["@test:lint", "@test:refacto", "@test:types", "@test:unit"]
     },
+    "extra": {
+        "laravel": {
+          "providers": [
+            "Musheabdulhakim\\CoinGecko\\ServiceProviders\\CoinGeckoServiceProvider"
+          ],
+          "aliases": {
+            "CoinGecko": "Musheabdulhakim\\CoinGecko\\Facades\\CoinGecko"
+          }
+        }
+      },
     "minimum-stability": "stable",
     "prefer-stable": true
 }

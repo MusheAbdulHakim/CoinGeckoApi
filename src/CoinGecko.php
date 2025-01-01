@@ -37,7 +37,7 @@ final class CoinGecko
     }
 
     /**
-     * Creates a new factory instance to configure a custom Open AI Client
+     * Creates a new factory instance to configure a custom Client
      */
     public static function factory(): Factory
     {
