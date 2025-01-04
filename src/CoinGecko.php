@@ -17,22 +17,14 @@ final class CoinGecko
             ->withApiKey($apiKey);
     }
 
-    public static function client(string $apiKey, string $baseUri = '', string $version = ''): Client
+    public static function client(string $apiKey = '', string $baseUri = '', bool $isPro = false, string $version = ''): Client
     {
-        $apiBaseUri = '';
-        if ($baseUri !== '') {
-            $apiBaseUri = $baseUri;
-        }
-
-        $apiVersion = '';
-        if ($version !== '') {
-            $apiVersion = $version;
-        }
 
         return self::factory()
-            ->withBaseUri($apiBaseUri)
             ->withApiKey($apiKey)
-            ->withVersion($apiVersion)
+            ->withBaseUri($baseUri)
+            ->withPro($isPro)
+            ->withVersion($version)
             ->make();
     }
 

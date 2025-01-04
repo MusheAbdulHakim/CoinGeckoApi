@@ -39,6 +39,13 @@ final class Factory
 
 
     /**
+     * Pro version of the api
+     *
+     */
+    private ?bool $isPro = null;
+
+
+    /**
      * The HTTP client for the requests.
      */
     private ?ClientInterface $httpClient = null;
@@ -100,6 +107,11 @@ final class Factory
     }
 
 
+    public function withPro(bool $status): self
+    {
+        $this->isPro = $status;
+        return $this;
+    }
 
     /**
      * Sets the HTTP client for the requests.
@@ -182,11 +194,12 @@ final class Factory
 
         $config = new Config();
 
-        if ($this->apiKey !== null) {
-            $headers = Headers::withAuthorization(ApiKey::from(
-                $this->baseUri !== null && $this->baseUri !== '' && $this->baseUri !== '0' ? $this->baseUri : $config->get('COINGECKO_API_KEY')
-            ));
-        }
+        $headers = Headers::withAuthorization(
+            boolVal($this->isPro ?? $config->get('COINGECKO_PRO')),
+            ApiKey::from(
+                $this->apiKey !== null && $this->apiKey !== '' && $this->apiKey !== '0' ? $this->apiKey : $config->get('COINGECKO_API_KEY')
+            )
+        );
 
         foreach ($this->headers as $name => $value) {
             $headers = $headers->withCustomHeader($name, $value);
@@ -197,12 +210,12 @@ final class Factory
             $this->apiVersion !== null && $this->apiVersion !== '' && $this->apiVersion !== '0' ? $this->apiVersion : $config->get('COINGECKO_API_VERSION'),
         );
 
-
         $queryParams = QueryParams::create();
         foreach ($this->queryParams as $name => $value) {
             $queryParams = $queryParams->withParam($name, $value);
         }
-        $client = $this->httpClient ??= Psr18ClientDiscovery::find();
+
+        $client = !$this->httpClient instanceof \Psr\Http\Client\ClientInterface ? Psr18ClientDiscovery::find() : $this->httpClient;
 
         $sendAsync = $this->makeStreamHandler($client);
 
