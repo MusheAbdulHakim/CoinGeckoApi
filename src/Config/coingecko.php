@@ -31,4 +31,10 @@ return [
      */
     'COINGECKO_API_KEY' => '',
 
+    /**
+     * Set to true if you are using the pro version
+     * When this is set to true, make sure the base uri is also set to the pro api url
+     */
+    'COINGECKO_PRO' => false,
+
 ];

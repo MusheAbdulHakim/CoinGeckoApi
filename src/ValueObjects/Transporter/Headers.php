@@ -32,10 +32,10 @@ final readonly class Headers
     /**
      * Creates a new Headers value object with the given API token.
      */
-    public static function withAuthorization(ApiKey $apiKey): self
+    public static function withAuthorization(bool $isPro, ApiKey $apiKey): self
     {
         return new self([
-            'x-cg-pro-api-key' => "{$apiKey->toString()}",
+            !empty($isPro) && ($isPro === true) ? 'x-cg-pro-api-key' : 'x-cg-demo-api-key' => "{$apiKey->toString()}",
         ]);
     }
 
